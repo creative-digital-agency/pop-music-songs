@@ -2,12 +2,12 @@
   "albums": [
     {
       "id": "demo-1",
-      "title": "Neon Afterglow",
+      "title": "Paper Moon",
       "artist": "PopWave Sessions",
       "genre": "Synth-pop",
-      "description": "A preview of a future synth-pop selection inspired by glowing city nights and shimmering melodies. Tracks coming soon.",
+      "description": "A preview of a future synth-pop selection inspired by glowing city nights and shimmering melodies.",
       "sample": true,
-      "tracks": []
+      "tracks": [assets/audio/Paper moon.mp3]
     },
     {
       "id": "demo-2",
