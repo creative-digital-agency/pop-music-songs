@@ -7,7 +7,7 @@
       "genre": "Synth-pop",
       "description": "A preview of a future synth-pop selection inspired by glowing city nights and shimmering melodies.",
       "sample": true,
-      "cover": "assets/images/paper-moon.jpg",
+      "cover": "assets/covers/Paper moon cover.png",
       "tracks": ["assets/audio/Paper moon.mp3"]
     },
     {
