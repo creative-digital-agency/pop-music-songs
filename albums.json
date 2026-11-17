@@ -8,7 +8,7 @@
       "description": "A preview of a future synth-pop selection inspired by glowing city nights and shimmering melodies.",
       "sample": true,
       "cover": "assets/covers/Paper moon cover.png",
-      "tracks": ["assets/audio/Paper moon.mp3"]
+      "src": ["assets/audio/Paper moon.mp3"]
     },
     {
       "id": "demo-2",
