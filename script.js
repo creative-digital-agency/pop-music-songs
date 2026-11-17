@@ -28,7 +28,39 @@ function buildQueue() { queue=albums.flatMap(a=>a.tracks.map((t,i)=>({albumId:a.
 function updateActiveTrack(){ document.querySelectorAll('.track').forEach(row=>row.classList.remove('is-active')); if(!currentTrack)return; const album=albums.find(a=>a.id===currentTrack.albumId); const card=document.getElementById(`album-${currentTrack.albumId}`); const row=card?.querySelectorAll('.track')[currentTrack.index]; row?.classList.add('is-active'); }
 async function playTrack(albumId,index){ const album=albums.find(a=>a.id===albumId); const track=album?.tracks[index]; if(!track?.src)return; currentTrack={albumId,index}; buildQueue(); queueIndex=queue.findIndex(q=>q.albumId===albumId&&q.index===index); audio.src=track.src; $('#player').hidden=false; $('#playerTitle').textContent=track.title; $('#playerArtist').textContent=album.artist; $('#playerArt').src=album.cover||'assets/favicon.png'; $('#currentTime').textContent='0:00'; $('#duration').textContent=track.duration?formatTime(track.duration):'0:00'; $('#seek').value=0; updateActiveTrack(); try{await audio.play()}catch(err){console.error('Audio playback failed:',err);$('#playPause').textContent='▶';$('#player').classList.remove('is-playing');} }
 function skip(direction){if(!queue.length)return;const next=(queueIndex+direction+queue.length)%queue.length;const q=queue[next];playTrack(q.albumId,q.index)}
-function validateCatalog(data){if(!data||!Array.isArray(data.albums))throw Error('Invalid albums.json: expected an albums array.');return data.albums.map((a,i)=>({id:String(a.id||`album-${i}`),title:String(a.title||'Untitled album'),artist:String(a.artist||'Unknown artist'),genre:String(a.genre||'Pop'),description:String(a.description||''),cover:typeof a.cover==='string'?a.cover:'',sample:!!a.sample,tracks:Array.isArray(a.tracks)?a.tracks.filter(t=>t&&typeof t.src==='string'&&t.src.trim()).map(t=>({title:String(t.title||'Untitled track'),src:t.src,duration:Number(t.duration)||null})):[]}));}
+function validateCatalog(data) {
+  if (!data || !Array.isArray(data.albums)) {
+    throw Error('Invalid albums.json');
+  }
+
+  return data.albums.map((a, i) => ({
+    id: String(a.id || `album-${i}`),
+    title: String(a.title || 'Untitled album'),
+    artist: String(a.artist || 'Unknown artist'),
+    genre: String(a.genre || 'Pop'),
+    description: String(a.description || ''),
+    cover: a.cover || '',
+    sample: !!a.sample,
+    tracks: (a.tracks || [])
+      .map((t, index) => {
+        if (typeof t === 'string') {
+          return {
+            title: t.split('/').pop()
+              .replace(/\.[^/.]+$/, ''),
+            src: t,
+            duration: null
+          };
+        }
+
+        return {
+          title: t.title || `Track ${index + 1}`,
+          src: t.src,
+          duration: Number(t.duration) || null
+        };
+      })
+      .filter(t => t.src)
+  }));
+}
 async function loadCatalog(){try{const response=await fetch('albums.json',{cache:'no-cache'});if(!response.ok)throw Error(`HTTP ${response.status}`);albums=validateCatalog(await response.json());renderAlbums()}catch(error){console.error('Could not load album catalog:',error);$('#emptyState').hidden=false;$('#emptyState').textContent='The music catalog could not be loaded. Please refresh the page or try again later.';}}
 function setup(){
  $('#year').textContent=new Date().getFullYear();$('#search').addEventListener('input',renderAlbums);
