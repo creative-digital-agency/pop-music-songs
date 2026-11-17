@@ -1,0 +1,31 @@
+{
+  "albums": [
+    {
+      "id": "demo-1",
+      "title": "Neon Afterglow",
+      "artist": "PopWave Sessions",
+      "genre": "Synth-pop",
+      "description": "A preview of a future synth-pop selection inspired by glowing city nights and shimmering melodies. Tracks coming soon.",
+      "sample": true,
+      "tracks": []
+    },
+    {
+      "id": "demo-2",
+      "title": "Electric Summer",
+      "artist": "PopWave Sessions",
+      "genre": "Dance-pop",
+      "description": "A preview of an upcoming dance-pop selection filled with bright hooks and summer energy. Tracks coming soon.",
+      "sample": true,
+      "tracks": []
+    },
+    {
+      "id": "demo-3",
+      "title": "Midnight Dreaming",
+      "artist": "PopWave Sessions",
+      "genre": "Dream pop",
+      "description": "A preview of an upcoming dream-pop selection with atmospheric textures and late-night moods. Tracks coming soon.",
+      "sample": true,
+      "tracks": []
+    }
+  ]
+}
