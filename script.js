@@ -21,7 +21,20 @@ function renderAlbums() {
 function updateSchema() {
  const list = albums.map((a,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'MusicAlbum',name:a.title,description:a.description,genre:a.genre,byArtist:{'@type':'MusicGroup',name:a.artist},numTracks:a.tracks.length,track:a.tracks.map((t,j)=>({'@type':'MusicRecording',name:t.title,position:j+1,byArtist:{'@type':'MusicGroup',name:a.artist},inAlbum:{'@type':'MusicAlbum',name:a.title},...(t.duration ? {duration:`PT${Math.floor(t.duration/60)}M${Math.round(t.duration%60)}S`} : {})}))}}));
  $('#musicSchema').textContent=JSON.stringify({'@context':'https://schema.org','@type':'ItemList',name:'Pop music albums',itemListElement:list});
- const faq=[['What is Pop Music Songs?','Pop Music Songs is an interactive album and track library where you can explore featured albums and listen to tracks published by the site’s editors.'],['Who adds the music?','Albums and songs are selected and published by the website administrator. Visitors can browse and listen, without needing to upload anything.'],['How can I listen to a song?','Open an album and press the play button beside an available track. Use the player to pause, skip, seek, or mute. Preview albums without tracks are not yet playable.']];
+const faq = [
+  [
+    'What is Pop Music Songs?',
+    'Pop Music Songs is an interactive album and track library.'
+  ],
+  [
+    'Who adds the music?',
+    'Albums and songs are selected and published by the website administrator.'
+  ],
+  [
+    'How can I listen to a song?',
+    'Open an album and press the play button beside an available track. Preview albums without tracks are not yet playable.'
+  ]
+];
  let script=$('#faqSchema'); if(!script){script=el('script');script.type='application/ld+json';script.id='faqSchema';document.head.append(script)} script.textContent=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))});
 }
 function buildQueue() { queue=albums.flatMap(a=>a.tracks.map((t,i)=>({albumId:a.id,index:i}))); }
