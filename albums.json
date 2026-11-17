@@ -5,7 +5,7 @@
       "title": "Paper Moon",
       "artist": "PopWave Sessions",
       "genre": "Dream pop",
-      "description": "A preview of a future dream pop selection inspired by glowing city nights and shimmering melodies.",
+      "description": "Inspired by Tokyo’s neon dreams and the endless shimmer of sound.",
       "sample": true,
       "cover": "assets/covers/Paper moon cover.png",  
 "tracks": [
@@ -17,21 +17,33 @@
     },
     {
       "id": "demo-2",
-      "title": "Electric Summer",
+      "title": "Fighting on My Own",
       "artist": "PopWave Sessions",
       "genre": "Dance-pop",
-      "description": "A preview of an upcoming dance-pop selection filled with bright hooks and summer energy. Tracks coming soon.",
+      "description": "A high-energy journey of independence, resilience, and unstoppable power.",
       "sample": true,
-      "tracks": []
+      "cover": "assets/covers/Paper moon cover.png",  
+"tracks": [
+  {
+    "title": "Fighting on My Own",
+    "src": "assets/audio/Paper moon.mp3"
+  }
+]
     },
     {
       "id": "demo-3",
-      "title": "Midnight Dreaming",
+      "title": "Fighting on My Own - The Silent Battle",
       "artist": "PopWave Sessions",
       "genre": "Dream pop",
-      "description": "A preview of an upcoming dream-pop selection with atmospheric textures and late-night moods. Tracks coming soon.",
+      "description": "Inspired by the power of knowing when to lock the door behind you and step into a stronger future.",
       "sample": true,
-      "tracks": []
+      "cover": "assets/covers/Paper moon cover.png",  
+"tracks": [
+  {
+    "title": "Fighting on My Own - The Silent Battle",
+    "src": "assets/audio/Paper moon.mp3"
+  }
+]
     }
   ]
 }
